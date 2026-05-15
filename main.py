@@ -19,11 +19,6 @@ NO_INNER_OS_MARKER = (
     "3. 思考内容应聚焦于剧情走向分析和回复内容规划，不要在思考中进行角色扮演式的内心戏表演"
 )
 
-PINNED_USER_PROMPT = (
-    "请将这段内容视为本会话固定保留的首条用户补充要求。"
-    "它不是 system prompt，但在后续每一轮请求里都必须作为第一条 user message 参与对话。"
-)
-
 MODE_TO_MARKER = {
     "default": "",
     "inner_os": INNER_OS_MARKER,
@@ -60,7 +55,7 @@ class MyPlugin(Star):
         """构造固定首条 user prompt，输入当前模式配置，副作用是拼接模式标记文本。"""
         default_prompt_mode = "inner_os" if self.config.inner_os else "no_inner_os"
         marker = MODE_TO_MARKER.get(default_prompt_mode, "")
-        prompt = f"{PINNED_USER_PROMPT}{marker}".strip()
+        prompt = f"{marker}".strip()
         return prompt
 
     def _pin_first_user_prompt(self, req: ProviderRequest, prompt: str) -> None:
