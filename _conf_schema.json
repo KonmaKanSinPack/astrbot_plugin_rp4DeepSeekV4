@@ -1,0 +1,7 @@
+{
+    "inner_os":{
+        "description": "是否启用内心独白模式，启用后会在对话中加入角色的内心活动描述",
+        "type": "bool",
+        "default": true
+    }
+}
