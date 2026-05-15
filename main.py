@@ -26,7 +26,7 @@ MODE_TO_MARKER = {
 }
 
 
-@register("helloworld", "YourName", "固定首条 user prompt 注入插件", "1.1.0")
+@register("astrbot_plugin_rp4DeepSeek", "兔子", "遵循DeepSeek V4 - 20260424版本角色扮演的提示词注入", "1.0.0")
 class MyPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         """初始化插件实例，输入插件上下文，副作用是保存运行时上下文。"""
