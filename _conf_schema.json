@@ -1,7 +1,12 @@
 {
-    "inner_os":{
+    "inner_os": {
         "description": "是否启用内心独白模式",
         "type": "bool",
         "default": true
+    },
+    "extra_os": {
+        "description": "额外的OS提示词，会追加注入到思考模式标记之后",
+        "type": "string",
+        "default": ""
     }
 }

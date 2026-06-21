@@ -55,7 +55,11 @@ class MyPlugin(Star):
         """构造固定首条 user prompt，输入当前模式配置，副作用是拼接模式标记文本。"""
         default_prompt_mode = "inner_os" if self.config.inner_os else "no_inner_os"
         marker = MODE_TO_MARKER.get(default_prompt_mode, "")
-        prompt = f"{marker}".strip()
+        parts = [marker] if marker else []
+        extra_os = (self.config.extra_os or "").strip()
+        if extra_os:
+            parts.append(extra_os)
+        prompt = "\n\n".join(parts).strip()
         return prompt
 
     def _pin_first_user_prompt(self, req: ProviderRequest, prompt: str) -> None:
